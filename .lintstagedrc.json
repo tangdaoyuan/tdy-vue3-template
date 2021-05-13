@@ -1,0 +1,5 @@
+{
+  "**/*.js": [],
+  "**/*.!(*d.)ts?(x)": ["prettier --write", "eslint --fix", "git add"],
+  "*.vue": ["vue-cli-service lint", "git add"]
+}
