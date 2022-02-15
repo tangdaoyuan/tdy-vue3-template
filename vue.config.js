@@ -1,5 +1,8 @@
 const path = require("path");
 const apiMocker = require('mocker-api');
+const AutoImport = require('unplugin-auto-import/webpack')
+const Components = require('unplugin-vue-components/webpack')
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 const mockerPriority = process.env.VUE_APP_MOCKER_PRIORITY || 'proxy';
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -37,6 +40,14 @@ module.exports = {
             alias: {
                 '@api': '@/http/api'
             }
-        }
+        },
+        plugins: [
+            AutoImport({
+                resolvers: [ElementPlusResolver()],
+            }),
+            Components({
+                resolvers: [ElementPlusResolver()],
+            }),
+        ],
     }
 };
